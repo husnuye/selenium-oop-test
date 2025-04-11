@@ -1,0 +1,26 @@
+image: mcr.microsoft.com/dotnet/sdk:9.0
+
+stages:
+  - build
+  - test
+
+variables:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+before_script:
+  - dotnet restore
+
+build:
+  stage: build
+  script:
+    - dotnet build --configuration Release
+  only:
+    - main
+
+test:
+  stage: test
+  script:
+    - dotnet test --no-restore --verbosity normal
+  only:
+    - main
