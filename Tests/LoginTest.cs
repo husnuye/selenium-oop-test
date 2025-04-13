@@ -6,6 +6,7 @@ using Allure.Net.Commons;
 using NUnit.Allure.Attributes;
 using NUnit.Allure.Core;
 using Allure.Commons; 
+using Allure.NUnit.Attributes;
 
 namespace SeleniumOOPTest.Tests
 {   
