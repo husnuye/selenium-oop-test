@@ -2,9 +2,16 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumOOPTest.Pages;
 using SeleniumOOPTest.Utils;
+using Allure.Net.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 
 namespace SeleniumOOPTest.Tests
-{
+{   
+
+    [TestFixture]
+    [AllureNUnit]
+    [AllureSuite("Login Suite")]
     public class LoginTest
     {
         /// <summary>
@@ -21,6 +28,9 @@ namespace SeleniumOOPTest.Tests
 
 
         [Test]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("husnuye")]
+        [AllureTag("smoke")]
         public void SuccessfulLoginTest()
         {
             var loginPage = new LoginPage(driver);
