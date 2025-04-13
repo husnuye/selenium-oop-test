@@ -2,23 +2,15 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumOOPTest.Pages;
 using SeleniumOOPTest.Utils;
+using AllureAttributes = Allure.NUnit.Attributes; // 🎯 Alias burada tanımlı
 using Allure.Net.Commons;
-using NUnit.Allure.Attributes;
-using NUnit.Allure.Core;
-using Allure.Commons; 
-using Allure.NUnit.Attributes;
 
 namespace SeleniumOOPTest.Tests
-{   
-
+{
     [TestFixture]
-    [AllureNUnit]
-    [AllureSuite("Login Suite")]
+    [AllureAttributes.AllureSuite("Login Suite")]
     public class LoginTest
     {
-        /// <summary>
-        /// Represents the WebDriver instance used to interact with the browser during tests.
-        /// </summary>
         private IWebDriver driver;
 
         [SetUp]
@@ -28,39 +20,27 @@ namespace SeleniumOOPTest.Tests
             driver.Navigate().GoToUrl("https://practicetestautomation.com/practice-test-login/");
         }
 
-
         [Test]
-        [AllureTag("login", "smoke")]
-        [AllureSeverity(Allure.Net.Commons.SeverityLevel.normal)]
-        [AllureOwner("husnuye")]
-        [AllureSuite("login")]
-        [AllureSubSuite("Basic")]
-        
-
+        [AllureAttributes.AllureOwner("husnuye")]
+        [AllureAttributes.AllureTag("login", "smoke")]
+        [AllureAttributes.AllureSeverity(SeverityLevel.normal)]
+        //
+        [AllureAttributes.AllureSubSuite("basic")]
         public void SuccessfulLoginTest()
         {
             var loginPage = new LoginPage(driver);
-
             loginPage.Login("student", "Password123");
-            Assert.That(driver.Url, Does.Contain("logged-in-successfully")); // Yeni versiyonda böyle
+
+            Assert.That(driver.Url, Does.Contain("logged-in-successfully"));
         }
 
         [TearDown]
         public void TearDown()
         {
-            if (driver == null)
-            {
-                return;
-            }
+            if (driver == null) return;
+
             driver.Quit();
-            driver.Dispose(); // Quit'e ek olarak Dispose da yaz
-            // This is a test change to trigger GitHub Actions
-
+            driver.Dispose();
         }
-
-
     }
 }
-
-    
-
