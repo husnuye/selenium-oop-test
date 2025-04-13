@@ -8,6 +8,7 @@
     <IsPackable>true</IsPackable>
     <IsTestProject>true</IsTestProject>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DebugType>full</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="NUnit.Framework" />
+    <PackageReference Include="Allure.NUnit" Version="2.12.1" />
   </ItemGroup>
 
 </Project>
