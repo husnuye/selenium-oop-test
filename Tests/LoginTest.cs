@@ -38,6 +38,8 @@ namespace SeleniumOOPTest.Tests
             }
             driver.Quit();
             driver.Dispose(); // Quit'e ek olarak Dispose da yaz
+            // This is a test change to trigger GitHub Actions
+
         }
 
 
