@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SeleniumOOPTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+335a731d35472fff2cff90d2ebcb008dd2fb1515")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f84405caad039dc1f31f40b00030b97206262875")]
 [assembly: System.Reflection.AssemblyProductAttribute("SeleniumOOPTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SeleniumOOPTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
