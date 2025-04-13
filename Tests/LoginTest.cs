@@ -30,7 +30,8 @@ namespace SeleniumOOPTest.Tests
 
         [Test]
         [AllureTag("smoke")] // ✅ Allure etiketi (raporda gruplanabilir)
-        [AllureSeverity(SeverityLevel.normal)] // ✅ Hata ciddiyeti (low, normal, critical vs.)
+        //
+        [AllureSeverity(Allure.Net.Commons.SeverityLevel.normal)] // ✅ Hata ciddiyeti (low, normal, critical vs.)
         [AllureOwner("husnuye")] // ✅ Kimin yazdığı
         [AllureSuite("Login")] // ✅ Testin ait olduğu suite
         [AllureSubSuite("Basic")] // ✅ 
