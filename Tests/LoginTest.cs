@@ -5,6 +5,7 @@ using SeleniumOOPTest.Utils;
 using Allure.Net.Commons;
 using NUnit.Allure.Attributes;
 using NUnit.Allure.Core;
+using Allure.Commons; 
 
 namespace SeleniumOOPTest.Tests
 {   
@@ -28,9 +29,12 @@ namespace SeleniumOOPTest.Tests
 
 
         [Test]
-        [AllureSeverity(SeverityLevel.critical)]
-        [AllureOwner("husnuye")]
-        [AllureTag("smoke")]
+        [AllureTag("smoke")] // ✅ Allure etiketi (raporda gruplanabilir)
+        [AllureSeverity(SeverityLevel.normal)] // ✅ Hata ciddiyeti (low, normal, critical vs.)
+        [AllureOwner("husnuye")] // ✅ Kimin yazdığı
+        [AllureSuite("Login")] // ✅ Testin ait olduğu suite
+        [AllureSubSuite("Basic")] // ✅ 
+        
         public void SuccessfulLoginTest()
         {
             var loginPage = new LoginPage(driver);
