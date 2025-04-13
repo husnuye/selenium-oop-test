@@ -5,17 +5,17 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup .NET
+      - name: Setup .NET 8
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'   # ✅ .NET 8 olarak güncellendi
+          dotnet-version: 8.0.x
 
       - name: Restore dependencies
         run: dotnet restore
@@ -23,24 +23,23 @@ jobs:
       - name: Build project
         run: dotnet build --configuration Release
 
-      - name: Run tests
-        run: dotnet test --no-restore --verbosity normal
+      - name: Run tests and generate TRX results
+        run: dotnet test --configuration Release --logger "trx;LogFileName=TestResults.trx" --results-directory TestResults
 
-      - name: Generate Allure Results
+      - name: Generate Allure results directory
         run: |
           mkdir -p allure-results
-          cp -r ./TestResults/*/ allure-results/
+          cp -r TestResults/* allure-results/
 
-      - name: Check Allure Folder Exists
-        run: |
-          echo "📁 Listing ./TestResults:"
-          ls -R ./TestResults || echo "❗ TestResults not found"
-
-          echo "📁 Listing ./allure-results:"
-          ls -R allure-results || echo "❗ allure-results not found"
-
-      - name: Upload Allure Results
+      - name: Upload Allure Results (Artifacts)
         uses: actions/upload-artifact@v3
         with:
           name: allure-results
           path: allure-results
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Dummy deploy step
+        run: echo "Deployment step - optional"
