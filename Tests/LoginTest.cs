@@ -29,13 +29,13 @@ namespace SeleniumOOPTest.Tests
 
 
         [Test]
-        [AllureTag("smoke")] // ✅ Allure etiketi (raporda gruplanabilir)
-        //
-        [AllureSeverity(Allure.Net.Commons.SeverityLevel.normal)] // ✅ Hata ciddiyeti (low, normal, critical vs.)
-        [AllureOwner("husnuye")] // ✅ Kimin yazdığı
-        [AllureSuite("Login")] // ✅ Testin ait olduğu suite
-        [AllureSubSuite("Basic")] // ✅ 
+        [AllureTag("login", "smoke")]
+        [AllureSeverity(Allure.Net.Commons.SeverityLevel.normal)]
+        [AllureOwner("husnuye")]
+        [AllureSuite("login")]
+        [AllureSubSuite("Basic")]
         
+
         public void SuccessfulLoginTest()
         {
             var loginPage = new LoginPage(driver);
