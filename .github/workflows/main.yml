@@ -2,21 +2,20 @@ name: .NET Test Automation
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '8.0.x'   # ✅ .NET 8 olarak güncellendi
 
       - name: Restore dependencies
         run: dotnet restore
@@ -25,12 +24,20 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Run tests
-        run: dotnet test --no-restore --verbosity normal --logger:"trx;LogFileName=TestResults.trx" --results-directory ./TestResults
+        run: dotnet test --no-restore --verbosity normal
 
       - name: Generate Allure Results
         run: |
           mkdir -p allure-results
-          cp -r ./TestResults/* allure-results/
+          cp -r ./TestResults/*/ allure-results/
+
+      - name: Check Allure Folder Exists
+        run: |
+          echo "📁 Listing ./TestResults:"
+          ls -R ./TestResults || echo "❗ TestResults not found"
+
+          echo "📁 Listing ./allure-results:"
+          ls -R allure-results || echo "❗ allure-results not found"
 
       - name: Upload Allure Results
         uses: actions/upload-artifact@v3
