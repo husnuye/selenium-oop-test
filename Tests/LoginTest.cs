@@ -2,13 +2,16 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumOOPTest.Pages;
 using SeleniumOOPTest.Utils;
-using AllureAttributes = Allure.NUnit.Attributes; // 🎯 Alias burada tanımlı
+using Allure.NUnit.Attributes; // 🎯 Alias burada tanımlı
 using Allure.Net.Commons;
+using Allure.NUnit;
+using NUnit.Allure.Core;
 
 namespace SeleniumOOPTest.Tests
 {
-    [TestFixture]
-    [AllureAttributes.AllureSuite("Login Suite")]
+
+    [Allure.NUnit.AllureNUnit]
+    [AllureSuite("Login Tests")]
     public class LoginTest
     {
         private IWebDriver driver;
@@ -21,11 +24,11 @@ namespace SeleniumOOPTest.Tests
         }
 
         [Test]
-        [AllureAttributes.AllureOwner("husnuye")]
-        [AllureAttributes.AllureTag("login", "smoke")]
-        [AllureAttributes.AllureSeverity(SeverityLevel.normal)]
+        [AllureOwner("husnuye")]
+        [AllureTag("login", "smoke")]
+        [AllureSeverity(SeverityLevel.normal)]
         //
-        [AllureAttributes.AllureSubSuite("basic")]
+        [AllureSubSuite("basic")]
         public void SuccessfulLoginTest()
         {
             var loginPage = new LoginPage(driver);
