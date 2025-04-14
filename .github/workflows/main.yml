@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch:  # Manuel tetikleme desteği
+  workflow_dispatch:  # Manuel tetikleme
 
 jobs:
   build-and-test:
@@ -27,29 +27,13 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: Install Allure CLI
-      run: |
-        sudo npm install -g allure-commandline
-    - name: Run tests with Allure support
+      run: sudo npm install -g allure-commandline
+
+    - name: Run tests and collect Allure results
       run: |
         mkdir -p allure-results
-        dotnet test --configuration Release --logger "trx;LogFileName=test-results.trx"
+        dotnet test --configuration Release --logger "trx;LogFileName=TestResults/test-results.trx"
         cp TestResults/test-results.trx allure-results/
-
-    - name: Generate Allure report
-      run: |
-        allure generate allure-results --clean -o allure-report
-        ls -la allure-report
-
-    - name: Upload Allure report as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: allure-report
-        path: allure-report/    
-
-    - name: Run tests with Allure support
-      run: |
-        mkdir -p allure-results
-        dotnet test --configuration Release --logger "console;verbosity=normal"
 
     - name: Generate Allure report
       run: |
