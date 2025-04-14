@@ -2,10 +2,10 @@ name: .NET Test Automation with Allure
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:  # Manuel tetikleme için
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -29,11 +29,18 @@ jobs:
     - name: Install Allure CLI
       run: sudo npm install -g allure-commandline
 
-    - name: Run tests and collect Allure results
+    - name: Run tests with Allure adapter
       run: |
         mkdir -p allure-results
-        dotnet test --configuration Release --logger "trx;LogFileName=TestResults/test-results.trx"
-        cp TestResults/test-results.trx allure-results/
+        dotnet test --configuration Release \
+          --logger:"trx;LogFileName=TestResults/test-results.trx" \
+          --results-directory TestResults
+
+    - name: Convert TRX to Allure format (via adapter)
+      run: |
+        dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI || true
+        export PATH="$PATH:/home/runner/.dotnet/tools"
+        livingdoc test-assembly <path-to-your-test-dll> -t TestResults/test-results.trx -o allure-results
 
     - name: Generate Allure report
       run: |
