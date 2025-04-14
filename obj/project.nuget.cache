@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "VwGHO5hmY7o=",
+  "dgSpecHash": "gnQ9bK7Unp4=",
   "success": true,
   "projectFilePath": "/Users/husnuye/SeleniumOOPTest/SeleniumOOPTest.csproj",
   "expectedPackageFiles": [
-    "/Users/husnuye/.nuget/packages/allure.commons/3.0.0.10/allure.commons.3.0.0.10.nupkg.sha512",
+    "/Users/husnuye/.nuget/packages/allure.commons/3.5.0.73/allure.commons.3.5.0.73.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/allure.net.commons/2.12.1/allure.net.commons.2.12.1.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/allure.nunit/2.12.1/allure.nunit.2.12.1.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/aspectinjector/2.8.1/aspectinjector.2.8.1.nupkg.sha512",
@@ -35,16 +35,5 @@
     "/Users/husnuye/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.15/microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/microsoft.netcore.app.ref/8.0.15/microsoft.netcore.app.ref.8.0.15.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "SeleniumOOPTest depends on Allure.Commons (>= 2.13.10) but Allure.Commons 2.13.10 was not found. Allure.Commons 3.0.0.10 was resolved instead.",
-      "libraryId": "Allure.Commons",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

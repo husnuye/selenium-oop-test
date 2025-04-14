@@ -46,11 +46,11 @@
           "dependencies": {
             "Allure.Commons": {
               "target": "Package",
-              "version": "[2.13.10, )"
+              "version": "[3.5.0.73, )"
             },
             "Allure.NUnit": {
               "target": "Package",
-              "version": "[2.12.1, )"
+              "version": "[2.*, )"
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
