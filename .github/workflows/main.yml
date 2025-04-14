@@ -36,21 +36,16 @@ jobs:
           livingdoc test-assembly ./bin/Release/net8.0/*.dll \
             -t allure-results/test-results.trx -o allure-results
 
-      - name: Load previous Allure report history
-        uses: actions/checkout@v3
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
+     - name: Prepare Allure history folder
+       run: mkdir -p allure-history
 
-      - name: Build Allure Report with History
-        uses: simple-elf/allure-report-action@v1.7
-        if: always()
-        with:
-          gh_pages: gh-pages
-          allure_results: allure-results
-          allure_history: allure-history
+     - name: Build Allure Report with History
+       uses: simple-elf/allure-report-action@v1.7
+       if: always()
+      with:
+        gh_pages: allure-history
+        allure_results: allure-results
+        allure_history: allure-history
 
       - name: Publish Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
