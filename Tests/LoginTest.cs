@@ -14,6 +14,7 @@ namespace SeleniumOOPTest.Tests
     public class LoginTest
     {
         private IWebDriver driver;
+        private bool disposed = false;
 
         [SetUp]
         public void SetUp()
@@ -46,12 +47,29 @@ namespace SeleniumOOPTest.Tests
                     $"Expected to be on success page, but was on {currentUrl}");
             });
         }
-
         [TearDown]
         public void TearDown()
         {
-            if (driver == null) return;
-            driver.Quit();
+            Dispose();
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing && driver != null)
+                {
+                    driver.Quit();
+                    driver.Dispose();
+                }
+                disposed = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
         }
     }
-}
