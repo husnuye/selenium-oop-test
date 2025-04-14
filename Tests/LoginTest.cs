@@ -8,7 +8,7 @@ using NUnit.Allure.Core;
 
 namespace SeleniumOOPTest.Tests
 {
-    [AllureNUnit]
+    [Allure.NUnit.AllureNUnit]
     [AllureSuite("Login")]
     [AllureSubSuite("Positive")]
     public class LoginTest
