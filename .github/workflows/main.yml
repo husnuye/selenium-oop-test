@@ -5,6 +5,11 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -29,28 +34,21 @@ jobs:
             --logger:"trx;LogFileName=test-results.trx" \
             --results-directory allure-results
 
-      - name: Install SpecFlow CLI
-        run: |
-          dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI || true
-          export PATH="$PATH:/home/runner/.dotnet/tools"
-          livingdoc test-assembly ./bin/Release/net8.0/*.dll \
-            -t allure-results/test-results.trx -o allure-results
+      - name: Prepare Allure history folder
+        run: mkdir -p allure-history
 
-     - name: Prepare Allure history folder
-       run: mkdir -p allure-history
+      - name: Build Allure Report
+        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        with:
+          gh_pages: allure-history
+          allure_results: allure-results
+          allure_history: allure-history
 
-     - name: Build Allure Report with History
-       uses: simple-elf/allure-report-action@v1.7
-       with:
-         gh_pages: allure-history
-         allure_results: allure-results
-         allure_history: allure-history
-
-    - name: Publish Allure Report to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: always()
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: allure-history
-        allow_empty_commit: true
+      - name: Publish Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-history
+          publish_branch: gh-pages
