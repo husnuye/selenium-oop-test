@@ -36,11 +36,18 @@ jobs:
           --logger:"trx;LogFileName=TestResults/test-results.trx" \
           --results-directory TestResults
 
+    - name: Detect test DLL path
+      id: detect-dll
+      run: |
+        DLL_PATH=$(find ./ -type f -path "*/bin/Release/*" -name "*.dll" | grep -vE "ref|TestAdapter" | head -n 1)
+        echo "DLL_PATH=$DLL_PATH" >> $GITHUB_ENV
+        echo "Detected DLL: $DLL_PATH"
+
     - name: Convert TRX to Allure format (via adapter)
       run: |
         dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI || true
         export PATH="$PATH:/home/runner/.dotnet/tools"
-        livingdoc test-assembly <path-to-your-test-dll> -t TestResults/test-results.trx -o allure-results
+        livingdoc test-assembly "$DLL_PATH" -t TestResults/test-results.trx -o allure-results
 
     - name: Generate Allure report
       run: |
@@ -52,3 +59,11 @@ jobs:
       with:
         name: allure-report
         path: allure-report/
+
+    - name: Deploy Allure report to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./allure-report
+        publish_branch: gh-pages
+        force_orphan: true
