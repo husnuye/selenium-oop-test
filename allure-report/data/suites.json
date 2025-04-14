@@ -1,1 +1,1 @@
-{"uid":"98d3104e051c652961429bf95fa0b5d6","name":"suites","children":[]}
+{"uid":"98d3104e051c652961429bf95fa0b5d6","name":"suites","children":[{"name":"SeleniumOOPTest.Tests.LoginTest","children":[{"name":"SuccessfulLoginTest","uid":"4719c890bdafedce","parentUid":"2b27472a2d4d0b8d856bfe39502029f2","status":"passed","time":{"start":1744630933818,"stop":1744630942762,"duration":8944},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":[],"tags":[]}],"uid":"2b27472a2d4d0b8d856bfe39502029f2"}]}

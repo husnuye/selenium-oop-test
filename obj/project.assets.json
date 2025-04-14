@@ -2,11 +2,11 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Allure.Commons/3.0.0.10": {
+      "Allure.Commons/3.5.0.73": {
         "type": "package",
         "dependencies": {
           "MimeTypesMap": "1.0.8",
-          "Newtonsoft.Json": "12.0.3"
+          "Newtonsoft.Json": "13.0.1"
         },
         "compile": {
           "lib/netstandard2.0/Allure.Commons.dll": {}
@@ -806,15 +806,15 @@
     }
   },
   "libraries": {
-    "Allure.Commons/3.0.0.10": {
-      "sha512": "tQp7p8QAjrDe1oMNTO86nGLYTQGCwunXAHy75dOd58PJNtZwD+mu9kDi0+Oadj5qZDEh6i1wG0NGrI1nc78b3g==",
+    "Allure.Commons/3.5.0.73": {
+      "sha512": "cqMlst9Za1TfOsgN2fWzMkdUeOTy07AZHaudOuRVAjTyBmUxDKOKxCwlkxO1Xw91ogsPCdXIJdduUtFFGw+Thw==",
       "type": "package",
-      "path": "allure.commons/3.0.0.10",
+      "path": "allure.commons/3.5.0.73",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "allure-net.png",
-        "allure.commons.3.0.0.10.nupkg.sha512",
+        "allure.commons.3.5.0.73.nupkg.sha512",
         "allure.commons.nuspec",
         "content/allureConfig.Template.json",
         "contentFiles/any/net45/allureConfig.Template.json",
@@ -2067,8 +2067,8 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Allure.Commons >= 2.13.10",
-      "Allure.NUnit >= 2.12.1",
+      "Allure.Commons >= 3.5.0.73",
+      "Allure.NUnit >= 2.*",
       "Microsoft.NET.Test.Sdk >= 17.13.0",
       "NUnit >= 3.13.3",
       "NUnit.Analyzers >= 4.4.0",
@@ -2124,11 +2124,11 @@
         "dependencies": {
           "Allure.Commons": {
             "target": "Package",
-            "version": "[2.13.10, )"
+            "version": "[3.5.0.73, )"
           },
           "Allure.NUnit": {
             "target": "Package",
-            "version": "[2.12.1, )"
+            "version": "[2.*, )"
           },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
@@ -2192,17 +2192,5 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "SeleniumOOPTest depends on Allure.Commons (>= 2.13.10) but Allure.Commons 2.13.10 was not found. Allure.Commons 3.0.0.10 was resolved instead.",
-      "libraryId": "Allure.Commons",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

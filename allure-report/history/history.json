@@ -1,1 +1,1 @@
-{}
+{"SeleniumOOPTest.Tests.LoginTest.SuccessfulLoginTest":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"4719c890bdafedce","status":"passed","time":{"start":1744630933818,"stop":1744630942762,"duration":8944}}]}}
