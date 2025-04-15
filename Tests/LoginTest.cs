@@ -42,10 +42,21 @@ namespace SeleniumOOPTest.Tests
 
             AllureApi.Step("Verify user is redirected to success page", () =>
             {
-                var currentUrl = driver.Url;
-                Assert.That(currentUrl, Does.Contain("logged-in-successfully"),
-                    $"Expected to be on success page, but was on {currentUrl}");
+                // Logout butonunu bul ve tıkla
+                IWebElement logoutButton = driver.FindElement(By.XPath("//*[contains(text(), 'Log out')]"));
+                logoutButton.Click();
             });
+
+            AllureApi.Step("Verify user is logged out", () =>
+            {
+                // Logout mesajını doğrula
+                var logoutPage = new LogoutPage(driver);
+                string actualMessage = logoutPage.GetLogoutMessage();
+
+                Assert.That(actualMessage, Is.EqualTo("Logged Out Successfully"));
+            });
+
+
         }
         [TearDown]
         public void TearDown()
