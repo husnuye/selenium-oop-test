@@ -52,7 +52,7 @@ pkill -f "Google Chrome"
 ### 📈 Allure Report (GitHub Actions)
 
 View the latest Allure Report from GitHub Actions:  
-👉 **[Click here to see the Allure Report](https://husnuye.github.io/selenium-oop-test/)**
+👉 [**View the latest Allure Report here**](https://husnuye.github.io/selenium-oop-test/)
 
 ✅ GitHub Actions automatically generates this report on every `main` branch push.
 
