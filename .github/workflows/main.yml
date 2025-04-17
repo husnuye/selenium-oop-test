@@ -46,6 +46,13 @@ jobs:
           allure_results: allure-results
           allure_history: allure-history
 
+      - name: Upload Allure report as artifact
+         if: always()
+         uses: actions/upload-artifact@v3
+         with:
+           name: allure-report
+           path: allure-history
+
       - name: Publish Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: always()
