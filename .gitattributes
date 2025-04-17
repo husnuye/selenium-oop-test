@@ -1,0 +1,6 @@
+* text=auto
+*.cs linguist-detectable=true
+*.csproj linguist-detectable=true
+*.sln linguist-detectable=true
+allure-report/ linguist-vendored
+allure-results/ linguist-vendored
