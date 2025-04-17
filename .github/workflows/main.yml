@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
@@ -40,22 +40,22 @@ jobs:
 
       - name: Build Allure Report
         uses: simple-elf/allure-report-action@v1.7
-        if: always()
+        if: ${{ !cancelled() }}
         with:
           gh_pages: allure-history
           allure_results: allure-results
           allure_history: allure-history
 
       - name: Upload Allure report as artifact
-        if: always()
-        uses: actions/upload-artifact@v3
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: allure-history
 
       - name: Publish Allure Report to GitHub Pages
+        if: ${{ !cancelled() }}
         uses: peaceiris/actions-gh-pages@v3
-        if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-history
