@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Apr 17 18:11:27 GMT 2025","Thu Apr 17 18:11:30 GMT 2025","2508","","SeleniumOOPTest.Tests.CheckoutTest","","SeleniumOOPTest.Tests.CheckoutTest","","UserCanCompleteCheckoutProcess",""
+"passed","Thu Apr 17 18:11:33 GMT 2025","Thu Apr 17 18:11:35 GMT 2025","1592","","SeleniumOOPTest.Tests.LogoutTest","","SeleniumOOPTest.Tests.LogoutTest","","UserShouldBeAbleToLogout",""
+"passed","Thu Apr 17 18:11:32 GMT 2025","Thu Apr 17 18:11:33 GMT 2025","981","","SeleniumOOPTest.Tests.LoginTest","","SeleniumOOPTest.Tests.LoginTest","","SuccessfulLoginTest",""
+"passed","Thu Apr 17 18:11:31 GMT 2025","Thu Apr 17 18:11:32 GMT 2025","1658","","SeleniumOOPTest.Tests.HomeTest","","SeleniumOOPTest.Tests.HomeTest","","UserShouldBeAbleToLogout",""
+"passed","Thu Apr 17 18:11:30 GMT 2025","Thu Apr 17 18:11:31 GMT 2025","1006","","SeleniumOOPTest.Tests.HomeTest","","SeleniumOOPTest.Tests.HomeTest","","HomePage_ShouldDisplayInventory_WhenUserIsLoggedIn",""
