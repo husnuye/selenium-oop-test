@@ -1,22 +1,31 @@
 using OpenQA.Selenium;
+using SeleniumOOPTest.Base;
 
 namespace SeleniumOOPTest.Pages
 {
-    public class LogoutPage
+    public class LogoutPage : BasePage
     {
-        private readonly IWebDriver driver;
+        public LogoutPage(IWebDriver driver) : base(driver) { }
 
-        public LogoutPage(IWebDriver webDriver)
+        // Menü butonu
+        private By menuButton => By.Id("react-burger-menu-btn");
+
+        // Logout linki
+        private By logoutLink => By.Id("logout_sidebar_link");
+
+        // Logout sonrası mesaj (isteğe bağlı kullanılabilir)
+        private By logoutMessage => By.XPath("//*[contains(text(), 'Logged Out Successfully')]");
+
+        public void Logout()
         {
-            driver = webDriver;
+            Click(menuButton);
+            WaitForElementVisible(logoutLink, 5);
+            Click(logoutLink);
         }
-
-        public IWebElement LogoutMessage => driver.FindElement(By.XPath("//h1[contains(text(), 'Logged In Successfully')]"));
-        
 
         public string GetLogoutMessage()
         {
-            return LogoutMessage.Text;
+            return WaitForElementVisible(logoutMessage).Text;
         }
     }
 }

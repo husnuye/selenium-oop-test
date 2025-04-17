@@ -1,28 +1,23 @@
 using OpenQA.Selenium;
+using SeleniumOOPTest.Base;
 
 namespace SeleniumOOPTest.Pages
 {
-    public class LoginPage
+    public class LoginPage : BasePage
     {
-        private IWebDriver driver;
+        public LoginPage(IWebDriver driver) : base(driver) { }
 
-        public LoginPage(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
+        // Locators
+        private By usernameField => By.Id("user-name");
+        private By passwordField => By.Id("password");
+        private By loginButton => By.Id("login-button");
 
-        private IWebElement Username => driver.FindElement(By.Id("username"));
-        private IWebElement Password => driver.FindElement(By.Id("password"));
-        private IWebElement LoginButton => driver.FindElement(By.Id("submit"));
-
-
-
-
+        // Methods
         public void Login(string username, string password)
         {
-            Username.SendKeys(username);
-            Password.SendKeys(password);
-            LoginButton.Click();
+            EnterText(usernameField, username);
+            EnterText(passwordField, password);
+            Click(loginButton);
         }
     }
 }
