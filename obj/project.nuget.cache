@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gnQ9bK7Unp4=",
+  "dgSpecHash": "odYAds8F0vM=",
   "success": true,
   "projectFilePath": "/Users/husnuye/SeleniumOOPTest/SeleniumOOPTest.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "/Users/husnuye/.nuget/packages/allure.nunit/2.12.1/allure.nunit.2.12.1.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/aspectinjector/2.8.1/aspectinjector.2.8.1.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/coverlet.collector/6.0.2/coverlet.collector.6.0.2.nupkg.sha512",
+    "/Users/husnuye/.nuget/packages/dotnetseleniumextras.waithelpers/3.11.0/dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/microsoft.applicationinsights/2.22.0/microsoft.applicationinsights.2.22.0.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/microsoft.codecoverage/17.13.0/microsoft.codecoverage.17.13.0.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/microsoft.net.test.sdk/17.13.0/microsoft.net.test.sdk.17.13.0.nupkg.sha512",
@@ -32,8 +33,8 @@
     "/Users/husnuye/.nuget/packages/system.collections.immutable/5.0.0/system.collections.immutable.5.0.0.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/system.diagnostics.diagnosticsource/5.0.0/system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
     "/Users/husnuye/.nuget/packages/system.reflection.metadata/1.6.0/system.reflection.metadata.1.6.0.nupkg.sha512",
-    "/Users/husnuye/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.15/microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512",
-    "/Users/husnuye/.nuget/packages/microsoft.netcore.app.ref/8.0.15/microsoft.netcore.app.ref.8.0.15.nupkg.sha512"
+    "/Users/husnuye/.nuget/packages/microsoft.netcore.app.ref/8.0.15/microsoft.netcore.app.ref.8.0.15.nupkg.sha512",
+    "/Users/husnuye/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.15/microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512"
   ],
   "logs": []
 }
