@@ -1,3 +1,4 @@
+
 name: Run tests and publish Allure report
 
 on:
