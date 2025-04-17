@@ -1,86 +1,43 @@
 using NUnit.Framework;
-using OpenQA.Selenium;
+using SeleniumOOPTest.Base;
 using SeleniumOOPTest.Pages;
-using SeleniumOOPTest.Utils;
 using Allure.NUnit.Attributes;
 using Allure.Net.Commons;
 using NUnit.Allure.Core;
 
 namespace SeleniumOOPTest.Tests
 {
-    [Allure.NUnit.AllureNUnit]
+    [AllureNUnit]
     [AllureSuite("Login")]
     [AllureSubSuite("Positive")]
-    public class LoginTest
+    public class LoginTest : BaseTest
     {
-        private IWebDriver driver;
-        private bool disposed = false;
+        private LoginPage loginPage;
+        private HomePage homePage;
 
         [SetUp]
-        public void SetUp()
+        public void SetUpTest()
         {
-            driver = DriverFactory.CreateDriver();
+            loginPage = new LoginPage(driver);
+            homePage = new HomePage(driver);
         }
 
         [Test]
         [AllureOwner("husnuye")]
         [AllureSeverity(SeverityLevel.critical)]
         [AllureTag("login", "smoke")]
-        [AllureDescription("Valid login scenario using correct username and password.")]
+        [AllureDescription("Valid login scenario for saucedemo.com")]
         public void SuccessfulLoginTest()
         {
-            AllureApi.Step("Navigate to Login Page", () =>
+            AllureApi.Step("Login with valid credentials", () =>
             {
-                driver.Navigate().GoToUrl("https://practicetestautomation.com/practice-test-login/");
+                loginPage.Login("standard_user", "secret_sauce");
             });
 
-            AllureApi.Step("Fill login form and submit", () =>
+            AllureApi.Step("Verify inventory page is visible", () =>
             {
-                var loginPage = new LoginPage(driver);
-                loginPage.Login("student", "Password123");
+                Assert.IsTrue(homePage.IsInventoryDisplayed(), "Login failed or inventory not visible.");
             });
-
-            AllureApi.Step("Verify user is redirected to success page", () =>
-            {
-                // Logout butonunu bul ve tıkla
-                IWebElement logoutButton = driver.FindElement(By.XPath("//*[contains(text(), 'Log out')]"));
-                logoutButton.Click();
-            });
-
-            AllureApi.Step("Verify user is logged out", () =>
-            {
-                // Logout mesajını doğrula
-                var logoutPage = new LogoutPage(driver);
-                string actualMessage = logoutPage.GetLogoutMessage();
-
-                Assert.That(actualMessage, Is.EqualTo("Logged Out Successfully"));
-            });
-
-
-        }
-        [TearDown]
-        public void TearDown()
-        {
-            Dispose();
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                if (disposing && driver != null)
-                {
-                    driver.Quit();
-                    driver.Dispose();
-                }
-                disposed = true;
-            }
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
         }
     }
+}

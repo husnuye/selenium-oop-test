@@ -1,0 +1,13 @@
+xecho "🧹 Killing leftover Chrome/Driver processes..."
+pkill -f chromedriver
+pkill -f "Google Chrome"
+
+echo "🧼 Cleaning project..."
+dotnet clean
+
+echo "🔨 Building project..."
+dotnet build
+
+echo "🧪 Running tests..."
+dotnet test
+
